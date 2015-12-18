@@ -4,12 +4,9 @@ output:
   html_document:
     keep_md: true
 ---
-##
-```{r setting the relevant directory}
-setwd("/Users/jochen/Documents/Coursera_DS/Reproducible_Research/PeerAssessment1/RepData_PeerAssessment1")
-```
 
-For the given tasks, I will make use of the 'dplyr' package.
+
+For the tasks ahead, I use the R-package 'dplyr'.
 ```{r}
 library(dplyr)
 ```
@@ -98,7 +95,7 @@ newData <- mutate(data.help2, steps.corr =
 
 ### Histogram of total number of steps each day
 The histogram integrates the replacement of missing values by the average by interval. I essentially use the same code (and parameters) as above to create this histogram.
-```{r Creating histogram total number of steps each day}
+```{r Histogram total number of steps each day}
 ## Histogram of total number of steps per day 
 ts2 <- sapply(split(newData$steps.corr,newData$date), sum)
 plot(ts2, xaxt="n", type = "h", ylab = "sum of steps per day", xlab="")
@@ -130,7 +127,7 @@ dayofweek = function(x){
 ```
 
 ### Coding the plot
-I add the newly obtained variable "dayofweek" to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by "interval" and the "dayofweek" variable. The dplyr-package function "summarize" is used for defining the requested statistics (mean).
+I add the newly obtained variable "dayofweek" to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by "interval" and the "dayofweek" variable. The dplyr-package function "summarize" is used for defining the requested statistics (mean). I also load the "lattice" package for constructing the panel plot.
 
 ```{r Code for plotting the panel plot}
 newData$dayofweek <- sapply(wd, FUN=dayofweek)

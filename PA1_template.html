@@ -64,10 +64,7 @@ img {
 </div>
 
 
-<div id="section" class="section level2">
-<h2></h2>
-<pre class="r"><code>setwd(&quot;/Users/jochen/Documents/Coursera_DS/Reproducible_Research/PeerAssessment1/RepData_PeerAssessment1&quot;)</code></pre>
-<p>For the given tasks, I will make use of the ‘dplyr’ package.</p>
+<p>For the tasks ahead, I use the R-package ‘dplyr’.</p>
 <pre class="r"><code>library(dplyr)</code></pre>
 <pre><code>## 
 ## Attaching package: 'dplyr'
@@ -79,7 +76,6 @@ img {
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-</div>
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
 <p>Preliminary remark: I suppose that the user of this program has set his working directory appropriately, so that when running the code, th eprogram will find the data frame “activity.csv”.</p>
@@ -179,7 +175,7 @@ dayofweek = function(x){
 </div>
 <div id="coding-the-plot" class="section level3">
 <h3>Coding the plot</h3>
-<p>I add the newly obtained variable “dayofweek” to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by “interval” and the “dayofweek” variable. The dplyr-package function “summarize” is used for defining the requested statistics (mean).</p>
+<p>I add the newly obtained variable “dayofweek” to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by “interval” and the “dayofweek” variable. The dplyr-package function “summarize” is used for defining the requested statistics (mean). I also load the “lattice” package for constructing the panel plot.</p>
 <pre class="r"><code>newData$dayofweek &lt;- sapply(wd, FUN=dayofweek)
 newData.sel &lt;- select(newData, interval, dayofweek, steps.corr)
 newData.selg &lt;- group_by(newData.sel, interval, dayofweek)

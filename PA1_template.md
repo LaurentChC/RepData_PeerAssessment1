@@ -1,11 +1,7 @@
 # Reproducible Research: Peer Assessment 1
-##
 
-```r
-setwd("/Users/jochen/Documents/Coursera_DS/Reproducible_Research/PeerAssessment1/RepData_PeerAssessment1")
-```
 
-For the given tasks, I will make use of the 'dplyr' package.
+For the tasks ahead, I use the R-package 'dplyr'.
 
 ```r
 library(dplyr)
@@ -141,7 +137,7 @@ plot(ts2, xaxt="n", type = "h", ylab = "sum of steps per day", xlab="")
 axis(1, at= 1:length(ts2), labels = names(ts2), las=2, cex.axis =0.6)
 ```
 
-![](PA1_template_files/figure-html/Creating histogram total number of steps each day-1.png) 
+![](PA1_template_files/figure-html/Histogram total number of steps each day-1.png) 
 
 One observes in the histogram that even after replacing all missing values, there is only small activity on 2 dates: 2 October and 15 November. Indeed, nearly all intervals on these 2 days take the value 0. I do not further investigate this issue.
 
@@ -176,7 +172,7 @@ dayofweek = function(x){
 ```
 
 ### Coding the plot
-I add the newly obtained variable "dayofweek" to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by "interval" and the "dayofweek" variable. The dplyr-package function "summarize" is used for defining the requested statistics (mean).
+I add the newly obtained variable "dayofweek" to the dataframe where missing values have been replaced by the average activity across days per interval. I then select the columns of interest (interval, dayofweek, steps.corr), then group by "interval" and the "dayofweek" variable. The dplyr-package function "summarize" is used for defining the requested statistics (mean). I also load the "lattice" package for constructing the panel plot.
 
 
 ```r
