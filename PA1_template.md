@@ -1,23 +1,15 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 For the tasks ahead, I use the R-package 'dplyr'.
 
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
 ```
 
 ## Loading and preprocessing the data
@@ -48,7 +40,7 @@ plot(ts, xaxt="n", type = "h", ylab = "sum of steps per day", xlab="")
 axis(1, at= 1:length(ts), labels = names(ts), las=2, cex.axis =0.6)
 ```
 
-![](PA1_template_files/figure-html/Histogram total steps per day-1.png) 
+![plot of chunk Histogram total steps per day](figure/Histogram total steps per day-1.png) 
 
 ```r
 ## Mean and median over the total steps per day
@@ -72,7 +64,7 @@ plot(x=n, y= avgactivity, type="l", mar = c(5.1,4.1, 4.1, 2.1),
       xlab ="5-minute interval of the day", ylab = "average activity across days")
 ```
 
-![](PA1_template_files/figure-html/Average daily activity pattern-1.png) 
+![plot of chunk Average daily activity pattern](figure/Average daily activity pattern-1.png) 
 
 ```r
 ## Interval with maximum average activity across the days
@@ -137,7 +129,7 @@ plot(ts2, xaxt="n", type = "h", ylab = "sum of steps per day", xlab="")
 axis(1, at= 1:length(ts2), labels = names(ts2), las=2, cex.axis =0.6)
 ```
 
-![](PA1_template_files/figure-html/Histogram total number of steps each day-1.png) 
+![plot of chunk Histogram total number of steps each day](figure/Histogram total number of steps each day-1.png) 
 
 One observes in the histogram that even after replacing all missing values, there is only small activity on 2 dates: 2 October and 15 November. Indeed, nearly all intervals on these 2 days take the value 0. I do not further investigate this issue.
 
@@ -187,6 +179,6 @@ plotData$interval <- as.character(plotData$interval)
 xyplot(plotData$avgsteps ~ plotData$interval | plotData$dayofweek, layout = c(1,2), type = "l", xlab = "Interval", ylab="Number of steps", xlim = c(-100, 0,500, 1000, 1500, 2000, 2500))
 ```
 
-![](PA1_template_files/figure-html/Code for plotting the panel plot-1.png) 
+![plot of chunk Code for plotting the panel plot](figure/Code for plotting the panel plot-1.png) 
 
 A comparison of the plots shows that on weekdays, there is a clear peak in the morning at about 9:00, whereas a peak of activity before 10:00 (actually a double peak) is less pronounced during the weekend. Also, activity begins later the day during the weekend than on weekdays. Furthermore, apart from the morning peak, activity is somewhat higher during weekends than on weekdays, with some peaks reaching 150 steps during the weekend.
